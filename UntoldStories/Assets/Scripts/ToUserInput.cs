@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ToUserInput : MonoBehaviour
 {
     public Animator animUserInput;
-	public DialogueTrigger trigger;
 	public Animator animInputButton;
+	public LevelController levelController;
     private RaycastHit hit;
     private Ray ray;
 
@@ -31,12 +31,20 @@ public class ToUserInput : MonoBehaviour
 			{
 				if (hit.transform.gameObject.tag == "Prova")
 				{
-					Destroy(hit.transform.gameObject);
+					
 					animUserInput.Play("UIAppear");
 					animInputButton.Play("opacityButton");
-					trigger.TriggerDialogue();
+					levelController.choiche = 2;
+					Destroy(hit.transform.gameObject);
 				}
-
+				if (hit.transform.gameObject.tag == "Example2")
+				{
+					
+					animUserInput.Play("UIAppear");
+					animInputButton.Play("opacityButton");
+					levelController.choiche = 1;
+					Destroy(hit.transform.gameObject);
+				}
 
 			}
 		}
@@ -53,9 +61,16 @@ public class ToUserInput : MonoBehaviour
 					Destroy(hit.transform.gameObject);
 					animUserInput.Play("UIAppear");
 					animInputButton.Play("opacityButton");
-					trigger.TriggerDialogue();
+					levelController.choiche = 2;
 				}
 
+				if (hit.transform.gameObject.tag == "Example2")
+				{
+					Destroy(hit.transform.gameObject);
+					animUserInput.Play("UIAppear");
+					animInputButton.Play("opacityButton");
+					levelController.choiche = 1;
+				}
 
 			}
 		}
